@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MoneyTransfer
 {
-    internal class Person
+    public class Person
     {
         public string name;
-        private Wallet wallet;
+        public Wallet wallet;
 
         public Person(string name, int cash)
         {
