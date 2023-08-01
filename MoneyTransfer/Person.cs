@@ -14,21 +14,21 @@ namespace MoneyTransfer
         public Person(string name, int cash)
         {
             //TODO 2: Assign the value of the 'name' parameter to the 'name' member variable. One line.
-
+            this.name = name;
             //TODO 3: Instantiate a new 'Wallet' object, passing the 'cash' parameter into its constructor. Assign this new Wallet to the 'wallet' member variable. One line.
-
+            wallet = new Wallet(cash);
         }
 
         public void DisplayInfo()
         {
             //TODO 4: Use string interpolation in a ConsoleWriteLine to display the user's name and also the amount of money in their wallet (using dot notation). One line.
-
+            Console.WriteLine($"{name} has {wallet.money} in their wallet.");
         }
 
         public void AcceptMoney(int amount)
         {
             //TODO 7: Use an assignment operator to increase the amount of money in the person's wallet by the value of the 'amount' parameter. One line.
-
+            wallet.money += amount;
         }
 
         public bool TransferMoney(Person receiver, int amountToTransfer)
@@ -37,6 +37,18 @@ namespace MoneyTransfer
             //If the parameter is less than the amount in the wallet, subtract that amount from the wallet, then call the receiver's AcceptMoney() method and pass 'amountToTransfer' into it. Also use a Console.WriteLine to describe the transaction that occurred.
             //If the parameter is greater than the amount in the giver's wallet, do not transfer any money and instead print a message describing why the transfer failed.
 
+            if (amountToTransfer <= wallet.money)
+            {
+                wallet.money -= amountToTransfer;
+                receiver.AcceptMoney(amountToTransfer);
+                Console.WriteLine($"{name} sent {amountToTransfer} to {receiver.name}.");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine($"{name} does not have enough money to transfer {amountToTransfer} to {receiver.name}.");
+                return false;
+            }
         }
 
 

@@ -17,10 +17,12 @@ namespace MoneyTransfer
         {
             Console.WriteLine("Starting simulation");
             //TODO 5: Instantiate two Person objects, with unique names and money amounts. Two lines.
-
+            Person person1 = new Person("James", 1000);
+            Person person2 = new Person("Michelle", 700);
 
             //TODO 6: Call the .DisplayInfo() method on each person object, one at a time. This will show their initial money amount. Two lines.
-
+            person1.DisplayInfo();
+            person2.DisplayInfo();
 
             //TEST THE APPLICATION AFTER TODOS 5 AND 6!!
 
